@@ -1,4 +1,4 @@
-jars/*.jars
+jars/*.jar
 NOTES.md
 go.sh
 target
