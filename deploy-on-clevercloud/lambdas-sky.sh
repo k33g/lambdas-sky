@@ -19,9 +19,9 @@ clever create $application_name -t war --org $organization --region par --alias 
 
 clever env set JAVA_VERSION 8 --alias $application_name
 clever env set PORT 8080 --alias $application_name
-clever env set TOKEN=$1 --alias $application_name
-clever env set API=$2 --alias $application_name
-clever env set CREDENTIALS=$3 --alias $application_name
+clever env set TOKEN $1 --alias $application_name
+clever env set API $2 --alias $application_name
+clever env set CREDENTIALS $3 --alias $application_name
 
 clever domain add $application_name.cleverapps.io --alias $application_name  
 clever scale --flavor M --alias $application_name
