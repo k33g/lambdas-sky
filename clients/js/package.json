@@ -1,0 +1,22 @@
+{
+  "name": "lambdas-sky",
+  "version": "1.0.0",
+  "description": "JavaScript code to test the Lambdas-Sky server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k33g/lambdas-sky.git"
+  },
+  "author": "k33g",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/k33g/lambdas-sky/issues"
+  },
+  "homepage": "https://github.com/k33g/lambdas-sky#readme",
+  "dependencies": {
+    "node-fetch": "^1.7.3"
+  }
+}
