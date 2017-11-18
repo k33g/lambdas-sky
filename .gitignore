@@ -3,6 +3,7 @@ NOTES.md
 go.sh
 target
 node_modules
+clients/js/node_modules
 .project
 .vscode
 gitbucket
