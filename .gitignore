@@ -10,3 +10,5 @@ gitbucket
 sandbox.golo
 package-lock.json
 .classpath
+.settings
+DEPLOY.md
