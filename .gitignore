@@ -10,4 +10,3 @@ gitbucket
 sandbox.golo
 package-lock.json
 .classpath
-deploy-on-clevercloud/deploy.sh
