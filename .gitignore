@@ -1,6 +1,7 @@
 jars/*.jar
 NOTES.md
 go.sh
+run.sh
 target
 node_modules
 clients/js/node_modules
