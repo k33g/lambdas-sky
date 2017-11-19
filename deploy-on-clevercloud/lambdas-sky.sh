@@ -53,7 +53,7 @@ cd lambdas-sky
 ./build-jar.sh
 cd ..
 
-./golo-lang/build/install/golo/bin/golo golo --classpath $(pwd)/lambdas-sky/jars/*jar --files $(pwd)/lambdas-sky/imports/*.golo $(pwd)/lambdas-sky/main.golo
+./golo-lang/build/install/golo/bin/golo golo --classpath \$(pwd)/lambdas-sky/jars/*jar --files \$(pwd)/lambdas-sky/imports/*.golo \$(pwd)/lambdas-sky/main.golo
 EOF
 chmod +x install.sh
 

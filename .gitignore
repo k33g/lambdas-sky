@@ -13,4 +13,4 @@ package-lock.json
 .settings
 DEPLOY.md
 deploy-on-clevercloud/deploy.sh
-
+deploy-on-clevercloud/lambdas-sky-project
