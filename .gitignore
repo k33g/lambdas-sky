@@ -1,4 +1,4 @@
-jars/*.jar
+#jars/*.jar
 NOTES.md
 go.sh
 run.sh
@@ -13,5 +13,3 @@ package-lock.json
 .classpath
 .settings
 DEPLOY.md
-deploy-on-clevercloud/deploy.sh
-deploy-on-clevercloud/lambdas-sky-project
