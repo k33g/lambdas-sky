@@ -12,3 +12,5 @@ package-lock.json
 .classpath
 .settings
 DEPLOY.md
+deploy-on-clevercloud/deploy.sh
+
