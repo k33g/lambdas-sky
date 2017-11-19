@@ -236,6 +236,7 @@ function defineRoutes = |config| {
     ) # end of either trying
     
     # NOTE that's the end
+    response: type("application/json;charset=UTF-8")
     return response: json(computation)
   })
 
