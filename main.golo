@@ -74,7 +74,7 @@ function searchValueInComments = |constantName, source| -> trying(->
 
 function defineRoutes = |config| {
   port(config: port())
-  externalStaticFileLocation("public")
+  externalStaticFileLocation(currentDir()+"/public")
 
   let dvcs = dvcs.Client(
     uri= config: api(),
@@ -350,7 +350,7 @@ function defineRoutes = |config| {
     return response: json(DynamicObject(): message("OK"))
   })
 
-  println("🌍 Lambdas-Sky server is listening on " + config: port() + "...")
+  println("🌍 Lambdas-Sky server is listening on " + config: port() + "... 👋")
 
 }
 
