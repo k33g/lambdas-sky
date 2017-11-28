@@ -7,6 +7,8 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 import gololang.Errors
+import gololang.Adapters
+
 import gololang.concurrent.workers.WorkerEnvironment
 import spark.Spark
 
@@ -158,7 +160,9 @@ function defineRoutes = |config| {
             recover= |error| -> "no description",
             mapping = |value| -> value
           )
-          log("📕 description: {0}", description)           
+          log("📕 description: {0}", description)  
+
+          # TODO: try catch on this: code= envEvaluations: def(commit: content()),         
 
           let lambdaToAdd = lambda(
             name= commit: name(),
@@ -315,6 +319,8 @@ function defineRoutes = |config| {
 
         # eg: sandbox|k33g/pony/blue/hello.golo
 
+        # TODO: try catch on this: code= envEvaluations: def(commit: content()), 
+
         lambdasMap: add(
           branch+"|"+owner+"/"+repositoryName+"/"+commit: path(),
           lambda(
@@ -364,8 +370,39 @@ function main = |args| {
   if (System.getenv(): get("PORT") is null) { raise("😡 no http port") }
   if (System.getenv(): get("TOKEN") is null) { raise("😡 no token") }
   if (System.getenv(): get("API") is null) { raise("😡 no token") }
-
   #if (System.getenv(): get("CREDENTIALS") is null) { raise("😡 no server credential") }
+
+  #  : overrides("checkRead", |super, this, file, context| {
+  #      #super(this)
+  #      throw java.lang.SecurityException("😡 read is ⛔️")
+  #  })     
+  #  : overrides("checkRead", |super, this, file| {
+  #      #super(this)
+  #      throw java.lang.SecurityException("😡 read is ⛔️")
+  #  }) 
+
+  #    : overrides("checkWrite", |super, this, file| {
+  #      #super(this)
+  #      throw java.lang.SecurityException("😡 write is ⛔️")
+  #  })    
+
+  # -------------------
+  let securityManagerDefinition = Adapter()
+    : extends("java.lang.SecurityManager")
+    : overrides("checkExit", |super, this, status| {
+        #super(this)
+        throw java.lang.SecurityException("😡 exit is ⛔️")
+    }) 
+    : overrides("checkDelete", |super, this, file| {
+        #super(this)
+        throw java.lang.SecurityException("😡 delete is ⛔️")
+    }) 
+    : overrides("checkExec", |super, this, cmd| {
+        #super(this)
+        throw java.lang.SecurityException("😡 exec is ⛔️")
+    })         
+  let securityManager = securityManagerDefinition: newInstance()  
+  System.setSecurityManager(securityManager)
   
   trying({
     let port =  Integer.parseInt(System.getenv(): get("PORT"))
@@ -381,7 +418,6 @@ function main = |args| {
     |config| -> defineRoutes(config),
     |error| -> log("😡 when starting Lambdas-Sky server {0}", error: message())
   )
-
 
 }
 

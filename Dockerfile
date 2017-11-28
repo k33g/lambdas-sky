@@ -17,4 +17,4 @@ ADD . /
 WORKDIR /
 EXPOSE 8080
 
-CMD ./golo-dist/bin/golo golo --classpath jars/*.jar --files imports/*.golo main.golo
+CMD JAVA_OPTS="-Djava.security.policy=./golo.policy -Djava.security.manager" ./golo-dist/bin/golo golo --classpath jars/*.jar --files imports/*.golo main.golo
